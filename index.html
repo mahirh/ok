@@ -228,51 +228,13 @@
     }
     
 
-<input id="fileUploadControl" name="fileUploadControl" type="file" />
-<button onclick="launchSaveToOneDrive">Save to OneDrive</button>
 
-  function launchSaveToOneDrive(){
-    var odOptions = {
-  clientId: "7a771899-8c49-416a-8fd5-b8c322bc839c",
-  action: "save | query",
-  sourceInputElementId: "fileUploadControl",
-  sourceUri: "",
-  fileName: "file.txt",
-  openInNewWindow: true,
-  advanced: {},
-  success: function(files) { /* success handler */ },
-  progress: function(p) { /* progress handler */ },
-  cancel: function() { /* cancel handler */ },
-  error: function(e) { /* error handler */ }
-}
-
-    OneDrive.save(odOptions);
-  }
-      WL.init({ client_id: "7a771899-8c49-416a-8fd5-b8c322bc839c", redirect_uri: 'https://mahirh.github.io/' });
-WL.login({
-        scope: "wl.skydrive wl.signin"
-    }).then(
-        function(response) {
-            WL.fileDialog({
-                mode: "open",
-                select: "multi"
-            }).then(
-                function (response) {
-                },
-                function (responseFailed) {
-                }
-            );
-        },
-
-        function(response) {
-            log("Failed to authenticate.");
-        }
-    );
 
     // start the whole thing off by calling odauth() in non-click mode.
     // if the user isn't logged in already, a sign-in link will appear
     // for them to click.
     odauth();
+
   </script>
 </body>
 </html>
